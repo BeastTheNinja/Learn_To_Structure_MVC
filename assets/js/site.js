@@ -1,69 +1,60 @@
-// spaghetti monster code
+// #region model
+// Data structures and business logic
+let lists = []; // Array to hold lists
+// #endregion model
 
+// #region view
 const mainContent = document.getElementById('content');
 
+function renderListView() {
+    mainContent.innerHTML = '';
+    const list = document.createElement('div');
+    list.innerHTML = '<h2>List View</h2><ul>Unordered list</ul>';
+    mainContent.appendChild(list);
+}
 
-    const newListButton = document.getElementById('newListButton');
-    newListButton.addEventListener('click',()=>{
- const content = document.getElementById('content');
-    
-    // Clear the content
-    content.innerHTML = '';
-    
-    // Create a section container
+function renderNewListForm() {
+    mainContent.innerHTML = '';
     const section = document.createElement('section');
-    
-    // Create label
+
     const label = document.createElement('label');
     label.textContent = 'Name:';
     label.setAttribute('for', 'listName');
-    
-    // Create text input
+
     const input = document.createElement('input');
     input.type = 'text';
     input.id = 'listName';
     input.value = 'default name';
-    
-    // Create OK button
+
     const okButton = document.createElement('button');
     okButton.textContent = 'OK';
     okButton.addEventListener('click', () => {
         console.log('OK clicked, list name:', input.value);
-       mainContent.innerHTML = '';
-    const list = document.createElement('div');
-    list.innerHTML = '<h2>List View</h2><ul></ul>';
-    mainContent.appendChild(list);
+        // Here you would typically add the new list to your data structure
+        renderListView();
     });
-    
-    // Create Cancel button
+
     const cancelButton = document.createElement('button');
     cancelButton.textContent = 'Cancel';
     cancelButton.addEventListener('click', () => {
         console.log('Cancel clicked');
-      mainContent.innerHTML = '';
-    const list = document.createElement('div');
-    list.innerHTML = '<h2>List View</h2><ul></ul>';
-    mainContent.appendChild(list);
+        renderListView();
     });
-    
-    // Append all elements to the section
+
     section.appendChild(label);
     section.appendChild(input);
     section.appendChild(okButton);
     section.appendChild(cancelButton);
-    
-    // Append section to content
-    content.appendChild(section);
-    });
+    mainContent.appendChild(section);
+}
+// #endregion view
 
-        mainContent.innerHTML = '';
-    const list = document.createElement('div');
-    list.innerHTML = '<h2>List View</h2><ul></ul>';
-    mainContent.appendChild(list);
+// #region controller
+const newListButton = document.getElementById('newListButton');
+newListButton.addEventListener('click', () => {
+    renderNewListForm();
+});
 
-
-
-
-
- 
-
+// Initial view
+renderListView();
+// #endregion controller
