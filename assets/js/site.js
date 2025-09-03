@@ -27,24 +27,34 @@ function renderNewListForm() {
     // Create the label
     const label = document.createElement('label');
 
+    // Set the label text
     label.textContent = 'Name:';
 
+    // Set the label 'for' attribute
     label.setAttribute('for', 'listName');
 
     // Create the input field
     const input = document.createElement('input');
-
+    
+    // Set the input type
     input.type = 'text';
 
+    // Set the input 'id' attribute
     input.id = 'listName';
 
+    // Set the input 'name' attribute
+    input.name = 'listName';
+
+    // Set the input 'value' attribute
     input.value = 'default name';
 
     // Add input validation or other logic here
     const okButton = document.createElement('button');
 
+    // Set the button text
     okButton.textContent = 'OK';
 
+    // Add event listener for OK button
     okButton.addEventListener('click', () => {
         console.log('OK clicked, list name:', input.value);
         // Here you would typically add the new list to your data structure
@@ -53,6 +63,7 @@ function renderNewListForm() {
     // Create the cancel button
     const cancelButton = document.createElement('button');
 
+    // Set the button text
     cancelButton.textContent = 'Cancel';
 
     // Add event listener for cancel button
